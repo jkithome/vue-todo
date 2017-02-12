@@ -20,11 +20,11 @@
       <div class='ui form'>
         <div class='field'>
           <label>Title</label>
-          <input type='text' ref='title' v-model="todo.title" >
+          <input type='text' v-model="todo.title" >
         </div>
         <div class='field'>
           <label>Project</label>
-          <input type='text' ref='project' v-model="todo.title" >
+          <input type='text' v-model="todo.project" >
         </div>
         <div class='ui two button attached buttons'>
           <button class='ui basic blue button' v-on:click="hideForm">
@@ -36,7 +36,7 @@
     <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
         Completed
     </div>
-    <div class='ui bottom attached red basic button' v-show="!isEditing && !todo.done">
+    <div class='ui bottom attached red basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
         Pending
     </div>
   </div>
@@ -51,6 +51,9 @@
       };
     },
     methods: {
+      completeTodo(todo) {
+        this.$emit('complete-todo', todo);
+      },
       deleteTodo(todo) {
         this.$emit('delete-todo', todo);
       },
