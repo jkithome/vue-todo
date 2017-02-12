@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <div class='content'>
-      <todo-list v-bind:todos="todos"></todo-list>
+    <h1 class="ui dividing centered header">Vue.js Todo App</h1>
+    <div class='ui three column centered grid'>
+      <div class='column'>
+        <todo-list v-bind:todos="todos"></todo-list>
+        </create-form>
+      </div>
     </div>
   </div>
 </template>
