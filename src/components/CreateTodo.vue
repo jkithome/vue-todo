@@ -8,11 +8,11 @@
         <div class='ui form'>
           <div class='field'>
             <label>Title</label>
-            <input v-model="titleText" type='text' ref='title' defaultValue="">
+            <input v-model="titleText" type='text'>
           </div>
           <div class='field'>
             <label>Project</label>
-            <input type='text' ref='project' defaultValue="">
+            <input v-model="projectText" type='text'>
           </div>
           <div class='ui two button attached buttons'>
             <button class='ui basic blue button' v-on:click="sendForm()">
@@ -53,9 +53,10 @@ export default {
           project,
           done: false,
         });
-        this.newTodoText = '';
+        this.titleText = '';
+        this.projectText = '';
+        this.isCreating = false;
       }
-      this.isCreating = false;
     },
   },
 };
