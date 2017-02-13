@@ -7,7 +7,7 @@
 </template>
 
 <script type = "text/javascript" >
-
+import sweetalert from 'sweetalert';
 import Todo from './Todo';
 
 export default {
@@ -17,12 +17,25 @@ export default {
   },
   methods: {
     deleteTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo);
-      this.todos.splice(todoIndex, 1);
+      sweetalert({
+        title: 'Are you sure?',
+        text: 'This To-Do will be permanently deleted!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, delete it!',
+        closeOnConfirm: false,
+      },
+      () => {
+        const todoIndex = this.todos.indexOf(todo);
+        this.todos.splice(todoIndex, 1);
+        sweetalert('Deleted!', 'Your To-Do has been deleted.', 'success');
+      });
     },
     completeTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = true;
+      sweetalert('Success!', 'To-Do completed!', 'success');
     },
   },
 };
